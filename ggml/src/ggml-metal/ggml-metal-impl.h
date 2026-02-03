@@ -81,10 +81,10 @@
 #define FC_COUNT_EQUAL                 1000
 
 // op-specific constants
-#define OP_FLASH_ATTN_EXT_NQPTG 8
+#define OP_FLASH_ATTN_EXT_NQPSG 8
 #define OP_FLASH_ATTN_EXT_NCPSG 64
 
-#define OP_FLASH_ATTN_EXT_VEC_NQPTG 1
+#define OP_FLASH_ATTN_EXT_VEC_NQPSG 1
 #define OP_FLASH_ATTN_EXT_VEC_NCPSG 32
 
 // kernel argument structs
@@ -927,6 +927,15 @@ typedef struct {
     int64_t  OW;
     int64_t  np;
 } ggml_metal_kargs_pool_2d;
+
+typedef struct {
+    int32_t  k0;
+    int32_t  s0;
+    int32_t  p0;
+    int64_t  IW;
+    int64_t  OW;
+    int64_t  np;
+} ggml_metal_kargs_pool_1d;
 
 typedef struct {
      int64_t ne00;
