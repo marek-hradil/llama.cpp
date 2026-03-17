@@ -567,6 +567,18 @@ class TensorNameMap:
             "model.layers.{bid}.mlp.chunk_experts.gate_proj",           # grovemoe
         ),
 
+        MODEL_TENSOR.FFN_GATE_UP_EXP: (
+            "model.layers.{bid}.mlp.experts.gate_up_proj",
+        ),
+
+        MODEL_TENSOR.MOE_LATENT_DOWN: (
+            "backbone.layers.{bid}.mixer.fc1_latent_proj",                 # nemotron 3 super
+        ),
+
+        MODEL_TENSOR.MOE_LATENT_UP: (
+            "backbone.layers.{bid}.mixer.fc2_latent_proj",                 # nemotron 3 super
+        ),
+
         # Feed-forward down
         MODEL_TENSOR.FFN_DOWN: (
             "gpt_neox.layers.{bid}.mlp.dense_4h_to_h",                # gptneox
@@ -1240,6 +1252,10 @@ class TensorNameMap:
         MODEL_TENSOR.CLS_OUT: (
             "classifier.out_proj", # roberta
         ),
+
+        MODEL_TENSOR.CLS_NORM: (
+            "head.norm", # modern-bert
+        ),
         #############################################################################
 
         MODEL_TENSOR.CONVNEXT_DW: (
@@ -1321,6 +1337,7 @@ class TensorNameMap:
             "multi_modal_projector.linear_{bid}",
             "mm_projector.proj.linear_{bid}", # Kimi-K2.5
             "visual.merger.mlp.{bid}", # qwen2vl
+            "mlp_AR.linear_{bid}", # PaddleOCR-VL
             "merger.mlp.{bid}",
         ),
 
@@ -1404,6 +1421,7 @@ class TensorNameMap:
         MODEL_TENSOR.V_ENC_ATTN_Q_NORM: (
             "vision_tower.vision_model.encoder.layers.{bid}.attn.q_norm", # InternVL
             "model.vision_tower.encoder.layer.{bid}.attention.q_norm", # Intern-S1
+            "visual.blocks.{bid}.attn.q_norm", # GLM-OCR
         ),
 
         MODEL_TENSOR.V_ENC_ATTN_K: (
@@ -1422,6 +1440,7 @@ class TensorNameMap:
         MODEL_TENSOR.V_ENC_ATTN_K_NORM: (
             "vision_tower.vision_model.encoder.layers.{bid}.attn.k_norm", # InternVL
             "model.vision_tower.encoder.layer.{bid}.attention.k_norm", # Intern-S1
+            "visual.blocks.{bid}.attn.k_norm", # GLM-OCR
         ),
 
         MODEL_TENSOR.V_ENC_ATTN_V: (
@@ -1568,6 +1587,7 @@ class TensorNameMap:
             "mm_projector.pre_norm", # Kimi-K2.5
             "pre_mm_projector_norm",
             "model.vision.linear_proj.norm1", # cogvlm
+            "mlp_AR.pre_norm", # PaddleOCR-VL
             "merger.ln_q",
         ),
 
@@ -1593,6 +1613,7 @@ class TensorNameMap:
 
         MODEL_TENSOR.V_RESMPL_ATTN_OUT: (
             "resampler.attn.out_proj",
+            "model.vision_model.head.attention.out_proj",
         ),
 
         MODEL_TENSOR.V_RESMPL_KV: (
